@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Middletown Mutt Mansion | Home Dog Boarding & Daycare</title>
+  <meta name="description" content="Crate-free home dog boarding and daycare in Middletown & Newport, RI. Hosted by Brian MacFarland & family since 2015 with 400+ 5-star reviews." />
+  <meta name="theme-color" content="#24140B" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Middletown Mutt Mansion | Home Dog Boarding & Daycare" />
+  <meta property="og:description" content="100% cage-free home dog boarding ($75/nt) & daycare ($50/day) in Middletown & Newport, RI. Big fenced yard & 400+ 5-star reviews." />
+  <meta property="og:image" content="/assets/final2.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" href="assets/siteicon.png" />
+  <link rel="apple-touch-icon" href="assets/siteicon.png" />
+
+  <!-- Fonts: Fraunces + Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            latte: {
+              50: '#F6EFE6',
+              100: '#EDE0D0',
+              200: '#DFCBB2',
+              300: '#CBB08F',
+            },
+            cocoa: {
+              600: '#6E4730',
+              700: '#523321',
+              800: '#382114',
+              900: '#24140B',
+            },
+            caramel: {
+              400: '#D98A4E',
+              500: '#C46D2E',
+              600: '#A3541D',
+            }
+          },
+          fontFamily: {
+            serif: ['Fraunces', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #24140B;
+      color: #24140B;
+      -webkit-tap-highlight-color: transparent;
+      overflow-x: hidden;
+    }
+
+    /* Warm radial ambient background */
+    .warm-bg {
+      background:
+        radial-gradient(circle at 12% 18%, rgba(196, 109, 46, 0.18), transparent 42%),
+        radial-gradient(circle at 88% 25%, rgba(82, 51, 33, 0.14), transparent 45%),
+        linear-gradient(180deg, #F6EFE6 0%, #EDE0D0 55%, #E3D1B8 100%);
+    }
+
+    input[type="range"] {
+      accent-color: #C46D2E;
+    }
+
+    details > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    /* Container-Query Support so both native Tablet screens AND the Viewport Switcher render identical Tablet layouts */
+    #app-stage {
+      container-type: inline-size;
+      container-name: stage;
+      transition: max-width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  margin 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-radius 0.45s ease,
+                  box-shadow 0.45s ease;
+    }
+
+    #app-stage.preview-frame {
+      margin: 20px auto 80px auto;
+      border-radius: 28px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), 0 0 0 8px #382114;
+      overflow: hidden;
+    }
+
+    /* Keyframe Animations */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-7px) rotate(1deg); }
+    }
+    @keyframes floatDelayed {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(196, 109, 46, 0.45); }
+      50% { box-shadow: 0 0 0 10px rgba(196, 109, 46, 0); }
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes pawBounce {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.12) rotate(-6deg); }
+    }
+
+    .animate-float { animation: floatSlow 4.5s ease-in-out infinite; }
+    .animate-float-delayed { animation: floatDelayed 5.2s ease-in-out 1.2s infinite; }
+    .animate-pulse-glow { animation: pulseGlow 2.8s infinite; }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 26s linear infinite;
+    }
+    .animate-marquee:hover { animation-play-state: paused; }
+
+    /* Scroll Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px) scale(0.98);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .delay-100 { transition-delay: 90ms; }
+    .delay-200 { transition-delay: 180ms; }
+    .delay-300 { transition-delay: 270ms; }
+
+    /* Interactive Card Hover Lift */
+    .brown-card {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .brown-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 36px -12px rgba(36, 20, 11, 0.25);
+    }
+    .brown-card:hover .card-icon {
+      animation: pawBounce 0.6s ease;
+    }
+
+    /* ============================================================================
+       RESPONSIVE CONTAINER LAYOUTS (Mobile < 700px | Tablet 700px–1023px | Desktop 1024px+)
+       ============================================================================ */
+    .nav-desktop { display: none; }
+    .nav-mobile-btn { display: flex; }
+    .mobile-bottom-bar { display: flex; }
+    .stage-pad-bottom { padding-bottom: 5rem; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .hero-copy { text-align: center; }
+    .hero-btns { justify-content: center; }
+    .hero-trust { justify-content: center; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .rates-outer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .rates-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .estimator-inner-grid {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .host-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    /* SMALL TABLET / LARGE PHONE (560px+) */
+    @container stage (min-width: 560px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+      .rates-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+    }
+
+    /* TABLET FORMAT (700px – 1023px: iPad Mini, iPad Air, iPad Pro Portrait) */
+    @container stage (min-width: 700px) {
+      .nav-desktop { display: flex; }
+      .nav-mobile-btn { display: none !important; }
+      .mobile-bottom-bar { display: none !important; }
+      .stage-pad-bottom { padding-bottom: 0; }
+      .nav-sms-pill { display: none; }
+
+      .hero-grid {
+        grid-template-columns: 6fr 6fr;
+        gap: 1.75rem;
+      }
+      .hero-copy { text-align: left; }
+      .hero-btns { justify-content: flex-start; }
+      .hero-trust { justify-content: flex-start; }
+      .hero-title { font-size: 2.5rem !important; line-height: 1.1 !important; }
+
+      .estimator-inner-grid {
+        display: grid;
+        grid-template-columns: 7fr 5fr;
+        gap: 1.75rem;
+        align-items: center;
+      }
+
+      .host-grid {
+        grid-template-columns: 7fr 5fr;
+        gap: 1.75rem;
+      }
+    }
+
+    /* DESKTOP FORMAT (1024px+) */
+    @container stage (min-width: 1024px) {
+      .nav-sms-pill { display: inline-flex; }
+      .hero-grid {
+        grid-template-columns: 6fr 6fr;
+        gap: 3rem;
+      }
+      .hero-title { font-size: 3.4rem !important; line-height: 1.08 !important; }
+
+      .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.25rem;
+      }
+
+      .rates-outer-grid {
+        grid-template-columns: 6fr 6fr;
+        gap: 1.5rem;
+      }
+      .rates-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .estimator-inner-grid {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- MAIN STAGE WRAPPER (Brown & Cream Theme) -->
+  <div id="app-stage" class="warm-bg stage-pad-bottom w-full mx-auto">
+
+    <!-- ================= STICKY NAVBAR (ESPRESSO & CREAM) ================= -->
+    <header class="sticky top-0 z-40 bg-cocoa-900/95 backdrop-blur-md border-b border-cocoa-700 text-latte-50 transition-all">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-3">
+        <!-- Brand -->
+        <a href="#" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+          <img src="assets/siteicon.png" alt="Middletown Mutt Mansion" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-contain bg-latte-50 border border-caramel-400 p-1 shadow-sm group-hover:rotate-6 transition duration-300" />
+          <div>
+            <span class="block font-serif text-base sm:text-lg lg:text-xl font-semibold tracking-tight text-latte-50 leading-none">
+              Middletown Mutt Mansion
+            </span>
+            <span class="block text-[11px] font-medium text-caramel-400 mt-0.5">
+              Middletown & Newport, RI
+            </span>
+          </div>
+        </a>
+
+        <!-- Tablet & Desktop Nav Links -->
+        <nav class="nav-desktop items-center gap-5 lg:gap-8 text-xs lg:text-sm font-semibold text-latte-200">
+          <a href="#features" class="hover:text-caramel-400 transition">Why Us</a>
+          <a href="#rates" class="hover:text-caramel-400 transition">Rates</a>
+          <a href="#host" class="hover:text-caramel-400 transition">Your Host</a>
+          <a href="#faq" class="hover:text-caramel-400 transition">FAQ</a>
+        </nav>
+
+        <!-- Tablet & Desktop Actions -->
+        <div class="nav-desktop items-center gap-2.5 shrink-0">
+          <a href="sms:4016813300?&body=BOARDING" class="nav-sms-pill items-center px-3.5 py-2 rounded-full text-xs font-semibold text-latte-100 border border-cocoa-600 hover:bg-cocoa-800 transition">
+            💬 401-681-3300
+          </a>
+          <button onclick="openModal('book')" class="px-4 lg:px-5 py-2.5 rounded-full bg-caramel-500 hover:bg-caramel-600 text-white text-xs lg:text-sm font-semibold transition transform hover:scale-105 animate-pulse-glow whitespace-nowrap">
+            Book a Stay
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button (< 700px) -->
+        <button onclick="toggleMobileMenu()" aria-label="Toggle Menu" class="nav-mobile-btn w-10 h-10 rounded-full bg-cocoa-800 border border-cocoa-600 items-center justify-center text-latte-50">
+          <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown Drawer -->
+      <div id="mobile-menu" class="hidden bg-cocoa-800 border-b border-cocoa-700 px-4 pt-3 pb-5 space-y-3">
+        <div class="grid grid-cols-2 gap-2 text-sm font-semibold text-latte-50">
+          <a href="#features" onclick="toggleMobileMenu()" class="p-3 rounded-xl bg-cocoa-900/70 border border-cocoa-700">🏡 Why Us</a>
+          <a href="#rates" onclick="toggleMobileMenu()" class="p-3 rounded-xl bg-cocoa-900/70 border border-cocoa-700">💳 Rates</a>
+          <a href="#host" onclick="toggleMobileMenu()" class="p-3 rounded-xl bg-cocoa-900/70 border border-cocoa-700">👋 Your Host</a>
+          <a href="#faq" onclick="toggleMobileMenu()" class="p-3 rounded-xl bg-cocoa-900/70 border border-cocoa-700">❓ FAQ</a>
+        </div>
+        <button onclick="toggleMobileMenu(); openModal('intake');" class="w-full py-3 rounded-xl bg-caramel-500 text-white text-sm font-semibold">
+          Complete New Client Intake Form
+        </button>
+      </div>
+    </header>
+
+    <!-- ================= HERO SECTION (BROWN & CREAM) ================= -->
+    <section class="py-8 sm:py-12 lg:py-16 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto hero-grid">
+        
+        <!-- Left Copy -->
+        <div class="hero-copy space-y-4 sm:space-y-5 reveal visible">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cocoa-800 text-latte-50 shadow-md text-xs font-semibold animate-float">
+            <span class="text-caramel-400">★★★★★</span>
+            <span>400+ 5-Star Reviews</span>
+            <span class="text-cocoa-600">•</span>
+            <span class="text-caramel-400">Since 2015</span>
+          </div>
+
+          <h1 class="hero-title font-serif text-3xl sm:text-4xl text-cocoa-900 leading-[1.1] tracking-tight">
+            Cage-free home boarding for <span class="italic font-normal text-caramel-600">happy dogs.</span>
+          </h1>
+
+          <p class="text-sm sm:text-base lg:text-lg text-cocoa-700 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            A cozy family home in Middletown with a large fenced yard, leather couch snuggles, and full-time supervision. Book direct and save 15%.
+          </p>
+
+          <div class="hero-btns flex flex-wrap items-center gap-3 pt-1">
+            <button onclick="openModal('book')" class="px-6 py-3.5 rounded-full bg-cocoa-900 hover:bg-caramel-600 text-latte-50 font-semibold text-sm transition duration-300 transform hover:-translate-y-0.5 shadow-lg">
+              Book a Stay — $75/nt
+            </button>
+            <button onclick="openModal('meet')" class="px-5 py-3.5 rounded-full bg-latte-50 hover:bg-latte-200 text-cocoa-900 font-semibold text-sm border border-cocoa-600/30 transition duration-300">
+              Free Meet & Greet
+            </button>
+          </div>
+
+          <!-- Micro Trust Bar -->
+          <div class="hero-trust pt-1 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-semibold text-cocoa-700">
+            <span>🐾 Zero Crates</span>
+            <span>🌿 Physical Fenced Yard</span>
+            <span>📲 Daily Photo Texts</span>
+          </div>
+        </div>
+
+        <!-- Right Visual Bento -->
+        <div class="reveal delay-100 visible">
+          <div class="grid grid-cols-12 gap-3">
+            <!-- Main Hero Photo -->
+            <div class="col-span-12 relative rounded-3xl overflow-hidden aspect-[16/10] bg-cocoa-900 shadow-xl border-4 border-cocoa-800 group">
+              <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=85" alt="Dogs playing in fenced yard" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out" />
+              <div class="absolute inset-0 bg-gradient-to-t from-cocoa-900/85 via-cocoa-900/15 to-transparent"></div>
+              <div class="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between gap-2 text-latte-50">
+                <span class="text-xs font-semibold truncate">📍 Middletown, RI</span>
+                <span class="px-2.5 py-1 rounded-full bg-caramel-500 text-white text-[11px] font-semibold shadow-sm shrink-0 animate-float-delayed">15+ lb Pups</span>
+              </div>
+            </div>
+
+            <!-- Rate Pill 1: Deep Cocoa Card -->
+            <div onclick="openModal('book')" class="col-span-6 p-4 rounded-2xl sm:rounded-3xl bg-cocoa-800 text-latte-50 border border-cocoa-700 flex flex-col justify-between cursor-pointer brown-card">
+              <span class="text-[11px] sm:text-xs font-semibold text-caramel-400">🌙 Boarding</span>
+              <div class="mt-1.5 flex items-baseline gap-1">
+                <span class="font-serif text-2xl sm:text-3xl font-semibold text-white">$75</span>
+                <span class="text-xs text-latte-200">/nt</span>
+              </div>
+              <span class="text-[11px] text-latte-200/80 font-medium mt-1">24hr home care →</span>
+            </div>
+
+            <!-- Rate Pill 2: Warm Cream/Latte Card -->
+            <div onclick="openModal('book')" class="col-span-6 p-4 rounded-2xl sm:rounded-3xl bg-latte-50 text-cocoa-900 border border-cocoa-600/25 flex flex-col justify-between cursor-pointer brown-card">
+              <span class="text-[11px] sm:text-xs font-semibold text-cocoa-700">☀️ Day Care</span>
+              <div class="mt-1.5 flex items-baseline gap-1">
+                <span class="font-serif text-2xl sm:text-3xl font-semibold text-cocoa-900">$50</span>
+                <span class="text-xs text-cocoa-700">/day</span>
+              </div>
+              <span class="text-[11px] text-cocoa-700 font-semibold mt-1">Mon–Sat 8a–6p →</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= ANIMATED MARQUEE RIBBON ================= -->
+    <div class="bg-cocoa-900 text-latte-100 py-3 border-y border-cocoa-700 overflow-hidden select-none">
+      <div class="animate-marquee flex items-center gap-10 text-xs font-semibold tracking-wide">
+        <span>🐕 100% CAGE-FREE HOME</span>
+        <span class="text-caramel-400">✦</span>
+        <span>🏡 BIG PHYSICAL FENCED YARD IN MIDDLETOWN</span>
+        <span class="text-caramel-400">✦</span>
+        <span>★ 400+ FIVE-STAR ROVER REVIEWS</span>
+        <span class="text-caramel-400">✦</span>
+        <span>💰 SAVE 50% VS. $150/NT NEWPORT KENNELS</span>
+        <span class="text-caramel-400">✦</span>
+        <span>📸 DAILY PHOTO & VIDEO TEXT UPDATES</span>
+        <span class="text-caramel-400">✦</span>
+        <span>🐕 100% CAGE-FREE HOME</span>
+        <span class="text-caramel-400">✦</span>
+        <span>🏡 BIG PHYSICAL FENCED YARD IN MIDDLETOWN</span>
+        <span class="text-caramel-400">✦</span>
+        <span>★ 400+ FIVE-STAR ROVER REVIEWS</span>
+        <span class="text-caramel-400">✦</span>
+        <span>💰 SAVE 50% VS. $150/NT NEWPORT KENNELS</span>
+        <span class="text-caramel-400">✦</span>
+        <span>📸 DAILY PHOTO & VIDEO TEXT UPDATES</span>
+      </div>
+    </div>
+
+    <!-- ================= WHY US (RICH COCOA & CREAM) ================= -->
+    <section id="features" class="py-12 sm:py-16 px-4 sm:px-6 bg-cocoa-800 text-latte-50">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8 reveal">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-caramel-400">The Mutt Mansion Difference</span>
+            <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl text-latte-50 mt-1">Like home, because it is one.</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-latte-200 max-w-xs">
+            Small guest groups, zero kennel stress, and half the price of Newport pet hotels.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="p-5 sm:p-6 rounded-3xl bg-cocoa-900/90 border border-cocoa-600/60 brown-card reveal">
+            <div class="card-icon w-10 h-10 rounded-2xl bg-caramel-500/20 border border-caramel-400/40 flex items-center justify-center text-lg mb-3.5">🛋️</div>
+            <h3 class="font-serif font-semibold text-lg text-latte-50">100% Crate-Free</h3>
+            <p class="text-xs sm:text-sm text-latte-200 mt-1.5 leading-relaxed">
+              Dogs roam the house freely and sleep on our sectional, dog beds, or upstairs with us.
+            </p>
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-3xl bg-cocoa-900/90 border border-cocoa-600/60 brown-card reveal delay-100">
+            <div class="card-icon w-10 h-10 rounded-2xl bg-caramel-500/20 border border-caramel-400/40 flex items-center justify-center text-lg mb-3.5">🌿</div>
+            <h3 class="font-serif font-semibold text-lg text-latte-50">Big Fenced Yard</h3>
+            <p class="text-xs sm:text-sm text-latte-200 mt-1.5 leading-relaxed">
+              A rare physical fence in Middletown for safe, supervised outdoor play and zoomies.
+            </p>
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-3xl bg-cocoa-900/90 border border-cocoa-600/60 brown-card reveal delay-200">
+            <div class="card-icon w-10 h-10 rounded-2xl bg-caramel-500/20 border border-caramel-400/40 flex items-center justify-center text-lg mb-3.5">🏡</div>
+            <h3 class="font-serif font-semibold text-lg text-latte-50">Full-Time Care</h3>
+            <p class="text-xs sm:text-sm text-latte-200 mt-1.5 leading-relaxed">
+              I work from home, so someone is with your dog 90%+ of the day—never left lonely.
+            </p>
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-3xl bg-cocoa-900/90 border border-cocoa-600/60 brown-card reveal delay-300">
+            <div class="card-icon w-10 h-10 rounded-2xl bg-caramel-500/20 border border-caramel-400/40 flex items-center justify-center text-lg mb-3.5">📲</div>
+            <h3 class="font-serif font-semibold text-lg text-latte-50">Daily Photo Texts</h3>
+            <p class="text-xs sm:text-sm text-latte-200 mt-1.5 leading-relaxed">
+              Get daily photo and video updates texted straight to your phone while you travel.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RATES & ESTIMATOR (CREAM CARDS + ESPRESSO ESTIMATOR) ================= -->
+    <section id="rates" class="py-12 sm:py-16 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center max-w-xl mx-auto mb-8 reveal">
+          <span class="text-xs font-bold uppercase tracking-widest text-caramel-600">Simple Pricing</span>
+          <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl text-cocoa-900 mt-1">Transparent Rates</h2>
+          <p class="text-xs sm:text-sm text-cocoa-700 mt-1.5">
+            Book directly with Cash or Venmo to skip Rover’s 15% service markup.
+          </p>
+        </div>
+
+        <div class="rates-outer-grid">
+          
+          <!-- Service Cards (Cream Cards with Brown Borders) -->
+          <div class="rates-cards-grid reveal">
+            <div class="p-6 rounded-3xl bg-latte-50 border-2 border-cocoa-700/30 flex flex-col justify-between brown-card">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 rounded-full bg-caramel-500 text-white text-xs font-semibold">Most Popular</span>
+                  <span class="text-xs font-medium text-cocoa-600">Drop-off 8am–6pm</span>
+                </div>
+                <div class="mt-3.5 flex items-baseline justify-between">
+                  <h3 class="font-serif text-xl sm:text-2xl text-cocoa-900">Overnight Boarding</h3>
+                  <div>
+                    <span class="font-serif text-2xl sm:text-3xl font-bold text-cocoa-900">$75</span>
+                    <span class="text-xs text-cocoa-600">/nt</span>
+                  </div>
+                </div>
+                <p class="text-xs sm:text-sm text-cocoa-700 mt-2.5 leading-relaxed">
+                  Full day play, overnight home sleeping, and daily photo texts. Discounts for 2+ dogs or 10+ nights.
+                </p>
+              </div>
+              <div class="mt-4 pt-3.5 border-t border-latte-200 flex items-center justify-between text-xs text-cocoa-700">
+                <span>Newport Kennels: <s class="text-cocoa-600">$150/nt</s></span>
+                <span class="font-bold text-caramel-600">Save 50%</span>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-3xl bg-latte-50 border-2 border-cocoa-700/20 flex flex-col justify-between brown-card">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 rounded-full bg-cocoa-800 text-latte-100 text-xs font-semibold">Mon – Sat</span>
+                  <span class="text-xs font-medium text-cocoa-600">8:00 AM – 6:00 PM</span>
+                </div>
+                <div class="mt-3.5 flex items-baseline justify-between">
+                  <h3 class="font-serif text-xl sm:text-2xl text-cocoa-900">Day Care</h3>
+                  <div>
+                    <span class="font-serif text-2xl sm:text-3xl font-bold text-cocoa-900">$50</span>
+                    <span class="text-xs text-cocoa-600">/day</span>
+                  </div>
+                </div>
+                <p class="text-xs sm:text-sm text-cocoa-700 mt-2.5 leading-relaxed">
+                  Structured backyard play, socialization, and afternoon naps. Great for workdays or a pre-boarding trial.
+                </p>
+              </div>
+              <div class="mt-4 pt-3.5 border-t border-latte-200 flex items-center justify-between text-xs text-cocoa-700">
+                <span>Middletown Pickup/Drop-off</span>
+                <span class="font-bold text-cocoa-900">Available</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instant Estimator (Rich Espresso Card) -->
+          <div class="p-6 sm:p-7 rounded-3xl bg-cocoa-900 text-latte-50 border border-cocoa-700 shadow-xl estimator-inner-grid reveal delay-100">
+            <div class="space-y-5">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-xl sm:text-2xl text-latte-50">Quick Trip Estimator</h3>
+                <span id="discount-tag" class="hidden px-2.5 py-1 rounded-full bg-caramel-500 text-white text-xs font-semibold">10% Long-Stay Off!</span>
+              </div>
+
+              <!-- Toggle Boarding vs Daycare -->
+              <div class="grid grid-cols-2 p-1.5 rounded-2xl bg-cocoa-800 border border-cocoa-700 text-xs sm:text-sm font-semibold">
+                <button type="button" id="est-boarding" onclick="setService('boarding')" class="py-2.5 rounded-xl bg-caramel-500 text-white shadow-sm transition duration-300">
+                  Overnight ($75)
+                </button>
+                <button type="button" id="est-daycare" onclick="setService('daycare')" class="py-2.5 rounded-xl text-latte-200 hover:text-white transition duration-300">
+                  Day Care ($50)
+                </button>
+              </div>
+
+              <!-- Nights Slider -->
+              <div>
+                <div class="flex justify-between items-baseline mb-1.5">
+                  <label for="est-nights" class="text-xs font-semibold uppercase tracking-wider text-latte-200">Length of Stay</label>
+                  <span id="est-nights-text" class="font-serif text-lg sm:text-xl font-semibold text-caramel-400">4 Nights</span>
+                </div>
+                <input id="est-nights" type="range" min="1" max="21" value="4" oninput="calcEstimate()" class="w-full h-2 bg-cocoa-700 rounded-lg cursor-pointer" />
+              </div>
+
+              <!-- Dogs Selector -->
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-latte-200 mb-2">Number of Dogs</label>
+                <div class="grid grid-cols-3 gap-2 text-xs sm:text-sm font-semibold">
+                  <button type="button" id="dog-1" onclick="setDogs(1)" class="py-2.5 rounded-xl border border-caramel-400 bg-caramel-500 text-white transition">1 Dog</button>
+                  <button type="button" id="dog-2" onclick="setDogs(2)" class="py-2.5 rounded-xl border border-cocoa-600 bg-cocoa-800 text-latte-100 transition">2 Dogs</button>
+                  <button type="button" id="dog-3" onclick="setDogs(3)" class="py-2.5 rounded-xl border border-cocoa-600 bg-cocoa-800 text-latte-100 transition">3 Dogs</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Total Box -->
+            <div class="p-5 rounded-2xl bg-cocoa-800 border border-cocoa-600 flex flex-col justify-between gap-4">
+              <div>
+                <div class="text-xs text-latte-200">Estimated Direct Total</div>
+                <div class="flex items-baseline gap-2.5 mt-1">
+                  <span id="est-total" class="font-serif text-3xl sm:text-4xl font-bold text-white transition-transform duration-200 inline-block">$300</span>
+                  <span id="est-savings" class="text-xs text-caramel-400 font-semibold">Save $45 vs. Rover</span>
+                </div>
+                <p class="text-[11px] text-latte-200/70 mt-1">Zero platform markup • Cash or Venmo</p>
+              </div>
+              <button onclick="openModalWithEstimate()" class="w-full px-6 py-3.5 rounded-full bg-caramel-500 hover:bg-caramel-600 text-white text-sm font-semibold transition transform hover:scale-105 text-center shadow-md">
+                Request Dates →
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MEET BRIAN + REQUIREMENTS ================= -->
+    <section id="host" class="py-12 sm:py-16 px-4 sm:px-6 bg-latte-200/80 border-y border-cocoa-700/15">
+      <div class="max-w-6xl mx-auto host-grid">
+        
+        <!-- Host Bio -->
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left reveal">
+          <img src="assets/final2.png" alt="Middletown Mutt Mansion Crest" class="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl object-cover bg-cocoa-900 p-1.5 shrink-0 shadow-lg animate-float" onerror="this.src='assets/siteicon.png'" />
+          <div class="space-y-2">
+            <span class="text-xs font-bold uppercase tracking-widest text-caramel-600">Your Host</span>
+            <h2 class="font-serif text-2xl sm:text-3xl text-cocoa-900">Hosted by Brian MacFarland & Family</h2>
+            <p class="text-xs sm:text-sm lg:text-base text-cocoa-800 leading-relaxed">
+              I started Middletown Mutt Mansion in 2015 while working from home so our dog could have playmates in our fenced yard. Along with my military wife and two kids, we’ve hosted hundreds of happy dogs with <strong>400+ five-star reviews</strong> on <a href="https://www.lazymanandmoney.com/rover" target="_blank" rel="noopener" class="underline font-bold text-cocoa-900 hover:text-caramel-600">Rover.com</a>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Simple 3-Checklist Box -->
+        <div class="p-5 sm:p-6 rounded-3xl bg-cocoa-900 text-latte-50 border border-cocoa-700 shadow-lg space-y-3 reveal delay-100">
+          <div class="text-xs font-bold uppercase tracking-wider text-caramel-400">Before You Book Checklist</div>
+          <div class="space-y-2 text-xs sm:text-sm text-latte-100">
+            <div class="flex items-center gap-2.5">
+              <span class="w-5 h-5 rounded-full bg-caramel-500 text-white flex items-center justify-center text-[11px] font-bold shrink-0">✓</span>
+              <span><strong>15+ lbs & Friendly:</strong> Dog-social, spayed/neutered.</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="w-5 h-5 rounded-full bg-caramel-500 text-white flex items-center justify-center text-[11px] font-bold shrink-0">✓</span>
+              <span><strong>Vaccinated:</strong> Rabies, DHPP, Bordetella + flea/tick.</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="w-5 h-5 rounded-full bg-caramel-500 text-white flex items-center justify-center text-[11px] font-bold shrink-0">✓</span>
+              <span><strong>What to Pack:</strong> Labeled food, leash & any meds.</span>
+            </div>
+          </div>
+          <div class="pt-1.5">
+            <button onclick="openModal('intake')" class="w-full py-2.5 rounded-xl bg-cocoa-800 hover:bg-caramel-500 border border-cocoa-600 text-xs font-semibold text-latte-50 transition duration-300">
+              Complete New-Client Intake Form →
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SHORT & DIRECT FAQ ================= -->
+    <section id="faq" class="py-12 sm:py-16 px-4 sm:px-6">
+      <div class="max-w-3xl mx-auto reveal">
+        <div class="text-center mb-7">
+          <span class="text-xs font-bold uppercase tracking-widest text-caramel-600">Quick Answers</span>
+          <h2 class="font-serif text-2xl sm:text-3xl text-cocoa-900 mt-1">Common Questions</h2>
+        </div>
+
+        <div class="space-y-3">
+          <details class="group rounded-2xl bg-latte-50 border border-cocoa-700/20 p-4 sm:p-5 brown-card" open>
+            <summary class="flex items-center justify-between cursor-pointer font-semibold text-sm sm:text-base text-cocoa-900">
+              <span>Where do the dogs sleep at night?</span>
+              <span class="text-caramel-600 group-open:rotate-45 transition duration-300 text-xl leading-none font-bold">+</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-cocoa-700 mt-2.5 leading-relaxed">
+              Never in cages! Dogs roam our home freely and choose between sleeping upstairs with us or downstairs on our leather sectional and cozy dog beds.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl bg-latte-50 border border-cocoa-700/20 p-4 sm:p-5 brown-card">
+            <summary class="flex items-center justify-between cursor-pointer font-semibold text-sm sm:text-base text-cocoa-900">
+              <span>Can we schedule a Meet & Greet first?</span>
+              <span class="text-caramel-600 group-open:rotate-45 transition duration-300 text-xl leading-none font-bold">+</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-cocoa-700 mt-2.5 leading-relaxed">
+              Absolutely! We encourage local Middletown & Newport dog owners to stop by with their pup Monday–Friday between 8:00 AM and 3:00 PM.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl bg-latte-50 border border-cocoa-700/20 p-4 sm:p-5 brown-card">
+            <summary class="flex items-center justify-between cursor-pointer font-semibold text-sm sm:text-base text-cocoa-900">
+              <span>What are drop-off hours and payment options?</span>
+              <span class="text-caramel-600 group-open:rotate-45 transition duration-300 text-xl leading-none font-bold">+</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-cocoa-700 mt-2.5 leading-relaxed">
+              Drop-off and pick-up are by appointment from 8:00 AM – 6:00 PM. We accept Cash and Venmo directly (or credit cards via Rover with a ~15% platform fee).
+            </p>
+          </details>
+
+          <details class="group rounded-2xl bg-latte-50 border border-cocoa-700/20 p-4 sm:p-5 brown-card">
+            <summary class="flex items-center justify-between cursor-pointer font-semibold text-sm sm:text-base text-cocoa-900">
+              <span>When do Holiday Rates apply in 2026?</span>
+              <span class="text-caramel-600 group-open:rotate-45 transition duration-300 text-xl leading-none font-bold">+</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-cocoa-700 mt-2.5 leading-relaxed">
+              Holiday rates apply on major holiday weekends (MLK, Presidents’ Day, Easter, Memorial Day, July 4th, Labor Day, Thanksgiving Nov 24–28, Christmas/NYE Dec 23–Jan 2) plus the Newport Folk & Jazz Festivals.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CLEAN ESPRESSO FOOTER ================= -->
+    <footer class="bg-cocoa-900 text-latte-100 py-10 px-4 sm:px-6 border-t border-cocoa-700">
+      <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="Logo" class="h-9 w-auto bg-latte-50 rounded-xl p-1" onerror="this.style.display='none'" />
+          <div>
+            <div class="font-serif text-base sm:text-lg font-semibold text-latte-50">Middletown Mutt Mansion</div>
+            <div class="text-xs text-latte-200/80">Middletown, RI • Text <a href="sms:4016813300?&body=BOARDING" class="text-caramel-400 underline">401-681-3300</a> • <a href="mailto:info@middletownmuttmansion.com" class="text-caramel-400 underline">info@middletownmuttmansion.com</a></div>
+          </div>
+        </div>
+        <div class="text-xs text-latte-200/60">
+          © 2026 Middletown Mutt Mansion. Text STOP to opt out.
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================= MOBILE STICKY BOTTOM BAR (< 700px) ================= -->
+    <div class="mobile-bottom-bar fixed bottom-0 inset-x-0 z-40 bg-cocoa-900/95 backdrop-blur-md border-t border-cocoa-700 px-4 py-3 items-center gap-3 shadow-2xl">
+      <a href="sms:4016813300?&body=BOARDING" class="flex-1 py-3 rounded-full border border-cocoa-600 text-latte-50 font-semibold text-xs text-center">
+        💬 Text 401-681-3300
+      </a>
+      <button onclick="openModal('book')" class="flex-1 py-3 rounded-full bg-caramel-500 text-white font-semibold text-xs text-center shadow-md">
+        Book a Stay ($75/nt)
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ================= FLOATING VIEWPORT PREVIEW SWITCHER (DESKTOP / TABLET / MOBILE) ================= -->
+  <div id="vp-switcher" class="hidden lg:flex fixed bottom-4 right-4 z-50 items-center gap-1 bg-cocoa-900/95 backdrop-blur-md border border-cocoa-600 p-1.5 rounded-full shadow-2xl text-xs font-semibold text-latte-100">
+    <span class="px-2.5 text-[11px] text-caramel-400 uppercase tracking-wider">View:</span>
+    <button type="button" id="vp-desktop" onclick="setViewport('desktop')" class="px-3 py-1.5 rounded-full bg-caramel-500 text-white transition">🖥️ Desktop</button>
+    <button type="button" id="vp-tablet" onclick="setViewport('tablet')" class="px-3 py-1.5 rounded-full hover:bg-cocoa-800 text-latte-100 transition">📟 Tablet (iPad)</button>
+    <button type="button" id="vp-mobile" onclick="setViewport('mobile')" class="px-3 py-1.5 rounded-full hover:bg-cocoa-800 text-latte-100 transition">📱 Mobile</button>
+    <button type="button" onclick="setViewport('desktop'); document.getElementById('vp-switcher').style.display='none';" title="Hide preview switcher" class="ml-0.5 w-6 h-6 rounded-full hover:bg-cocoa-800 text-latte-200/70 hover:text-white flex items-center justify-center transition">✕</button>
+  </div>
+
+  <!-- ================= CLEAN BOOKING MODAL ================= -->
+  <div id="modal" class="fixed inset-0 z-50 hidden bg-cocoa-900/75 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-latte-50 w-full sm:max-w-lg rounded-t-3xl sm:rounded-3xl border border-cocoa-700/30 shadow-2xl overflow-hidden max-h-[88vh] flex flex-col">
+      
+      <!-- Modal Top -->
+      <div class="px-6 py-4 bg-cocoa-900 text-latte-50 flex items-center justify-between">
+        <div class="font-serif text-xl font-semibold">Reserve Your Dog’s Stay</div>
+        <button type="button" onclick="closeModal()" class="w-8 h-8 rounded-full bg-cocoa-800 text-latte-100 flex items-center justify-center text-sm font-bold hover:bg-cocoa-700">✕</button>
+      </div>
+
+      <!-- Segmented Mode Switcher -->
+      <div class="px-6 pt-4">
+        <div class="grid grid-cols-3 p-1 rounded-xl bg-latte-200 text-xs font-semibold">
+          <button type="button" id="tab-book" onclick="switchTab('book')" class="py-2 rounded-lg bg-cocoa-900 text-latte-50 shadow-sm transition">Book Stay</button>
+          <button type="button" id="tab-meet" onclick="switchTab('meet')" class="py-2 rounded-lg text-cocoa-800 transition">Meet & Greet</button>
+          <button type="button" id="tab-intake" onclick="switchTab('intake')" class="py-2 rounded-lg text-cocoa-800 transition">Client Intake</button>
+        </div>
+      </div>
+
+      <!-- Form Body -->
+      <form id="modal-form" onsubmit="submitForm(event)" class="p-6 space-y-3.5 overflow-y-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <input id="f-name" type="text" required placeholder="Your Name *" class="w-full px-4 py-3 rounded-xl bg-white border border-cocoa-600/25 text-sm focus:outline-none focus:border-cocoa-900" />
+          <input id="f-phone" type="tel" required placeholder="Mobile Phone (For SMS) *" class="w-full px-4 py-3 rounded-xl bg-white border border-cocoa-600/25 text-sm focus:outline-none focus:border-cocoa-900" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <input id="f-dog" type="text" required placeholder="Dog Name & Breed *" class="w-full px-4 py-3 rounded-xl bg-white border border-cocoa-600/25 text-sm focus:outline-none focus:border-cocoa-900" />
+          <input id="f-weight" type="number" min="15" required placeholder="Dog Weight (15+ lbs) *" class="w-full px-4 py-3 rounded-xl bg-white border border-cocoa-600/25 text-sm focus:outline-none focus:border-cocoa-900" />
+        </div>
+
+        <div id="dates-row" class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-semibold text-cocoa-700 mb-1">Check-In</label>
+            <input id="f-checkin" type="date" required class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-cocoa-600/25 text-sm" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-cocoa-700 mb-1">Check-Out</label>
+            <input id="f-checkout" type="date" required class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-cocoa-600/25 text-sm" />
+          </div>
+        </div>
+
+        <div id="intake-extra" class="hidden space-y-3 pt-1">
+          <input id="f-vet" type="text" placeholder="Veterinary Clinic Name & Phone" class="w-full px-4 py-3 rounded-xl bg-white border border-cocoa-600/25 text-sm" />
+          <label class="flex items-center gap-2 text-xs text-cocoa-800">
+            <input type="checkbox" class="accent-caramel-500" checked />
+            <span>My dog is neutered/spayed & up to date on Rabies, DHPP, and Bordetella.</span>
+          </label>
+        </div>
+
+        <textarea id="form-notes" rows="2" placeholder="Any notes or questions?" class="w-full px-4 py-3 rounded-xl bg-white border border-cocoa-600/25 text-sm focus:outline-none focus:border-cocoa-900"></textarea>
+
+        <button type="submit" id="submit-btn" class="w-full py-3.5 rounded-full bg-caramel-500 hover:bg-caramel-600 text-white font-semibold text-sm transition shadow-md">
+          Send Request
+        </button>
+      </form>
+
+      <!-- Success Message (Static-Host Ready with Direct SMS & Email Handoff) -->
+      <div id="modal-done" class="hidden p-8 text-center space-y-3.5">
+        <div class="w-12 h-12 rounded-full bg-caramel-500 text-white flex items-center justify-center text-xl mx-auto font-bold">✓</div>
+        <h4 class="font-serif text-2xl text-cocoa-900">Request Ready!</h4>
+        <p class="text-sm text-cocoa-700">Tap below to send your details directly to Brian via text or email for the fastest reply:</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5 pt-1">
+          <a id="direct-sms-link" href="sms:4016813300?&body=BOARDING" class="w-full sm:w-auto px-5 py-3 rounded-full bg-caramel-500 hover:bg-caramel-600 text-white text-xs font-semibold transition shadow-sm">
+            💬 Text 401-681-3300
+          </a>
+          <a id="direct-email-link" href="mailto:info@middletownmuttmansion.com" class="w-full sm:w-auto px-5 py-3 rounded-full bg-cocoa-900 hover:bg-cocoa-800 text-latte-50 text-xs font-semibold transition">
+            ✉️ Send via Email
+          </a>
+        </div>
+        <button type="button" onclick="closeModal()" class="mt-2 px-5 py-2 rounded-full text-cocoa-700 hover:text-cocoa-900 text-xs font-semibold underline">Close Window</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    let state = { service: 'boarding', nights: 4, dogs: 1 };
+
+    // Scroll Reveal Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Live Viewport Switcher (Desktop / Tablet iPad 820px / Mobile 390px)
+    function setViewport(mode) {
+      const stage = document.getElementById('app-stage');
+      ['desktop', 'tablet', 'mobile'].forEach(m => {
+        document.getElementById('vp-' + m).className = m === mode
+          ? 'px-3 py-1.5 rounded-full bg-caramel-500 text-white transition'
+          : 'px-3 py-1.5 rounded-full hover:bg-cocoa-800 text-latte-100 transition';
+      });
+      if (mode === 'desktop') {
+        stage.style.maxWidth = '100%';
+        stage.classList.remove('preview-frame');
+      } else if (mode === 'tablet') {
+        stage.style.maxWidth = '820px';
+        stage.classList.add('preview-frame');
+      } else if (mode === 'mobile') {
+        stage.style.maxWidth = '390px';
+        stage.classList.add('preview-frame');
+      }
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const openIcon = document.getElementById('menu-icon-open');
+      const closeIcon = document.getElementById('menu-icon-close');
+      menu.classList.toggle('hidden');
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    }
+
+    function setService(s) {
+      state.service = s;
+      document.getElementById('est-boarding').className = s === 'boarding'
+        ? 'py-2.5 rounded-xl bg-caramel-500 text-white shadow-sm transition duration-300'
+        : 'py-2.5 rounded-xl text-latte-200 hover:text-white transition duration-300';
+      document.getElementById('est-daycare').className = s === 'daycare'
+        ? 'py-2.5 rounded-xl bg-caramel-500 text-white shadow-sm transition duration-300'
+        : 'py-2.5 rounded-xl text-latte-200 hover:text-white transition duration-300';
+      calcEstimate();
+    }
+
+    function setDogs(n) {
+      state.dogs = n;
+      [1, 2, 3].forEach(i => {
+        document.getElementById('dog-' + i).className = i === n
+          ? 'py-2.5 rounded-xl border border-caramel-400 bg-caramel-500 text-white transition'
+          : 'py-2.5 rounded-xl border border-cocoa-600 bg-cocoa-800 text-latte-100 transition';
+      });
+      calcEstimate();
+    }
+
+    function calcEstimate() {
+      const nights = parseInt(document.getElementById('est-nights').value, 10);
+      state.nights = nights;
+      const unit = state.service === 'boarding' ? (nights === 1 ? 'Night' : 'Nights') : (nights === 1 ? 'Day' : 'Days');
+      document.getElementById('est-nights-text').textContent = `${nights} ${unit}`;
+
+      const rate = state.service === 'boarding' ? 75 : 50;
+      const mult = state.dogs === 1 ? 1 : (state.dogs === 2 ? 1.85 : 2.6);
+      let total = rate * mult * nights;
+
+      const discountTag = document.getElementById('discount-tag');
+      if (nights >= 10) {
+        total *= 0.9;
+        discountTag.classList.remove('hidden');
+      } else {
+        discountTag.classList.add('hidden');
+      }
+
+      const direct = Math.round(total);
+      const saved = Math.round(direct * 0.15);
+      const totalEl = document.getElementById('est-total');
+      totalEl.style.transform = 'scale(1.08)';
+      setTimeout(() => { totalEl.style.transform = 'scale(1)'; }, 150);
+      totalEl.textContent = `$${direct.toLocaleString()}`;
+      document.getElementById('est-savings').textContent = `Save $${saved} vs. Rover`;
+    }
+
+    function openModal(tab = 'book') {
+      document.getElementById('modal').classList.remove('hidden');
+      document.getElementById('modal-form').classList.remove('hidden');
+      document.getElementById('modal-done').classList.add('hidden');
+      switchTab(tab);
+    }
+
+    function openModalWithEstimate() {
+      openModal('book');
+      document.getElementById('form-notes').value = `Estimate: ${state.nights} ${state.service === 'boarding' ? 'nights boarding' : 'days daycare'} for ${state.dogs} dog(s).`;
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+
+    let activeTab = 'book';
+
+    function switchTab(tab) {
+      activeTab = tab;
+      ['book', 'meet', 'intake'].forEach(t => {
+        document.getElementById('tab-' + t).className = t === tab
+          ? 'py-2 rounded-lg bg-cocoa-900 text-latte-50 shadow-sm transition'
+          : 'py-2 rounded-lg text-cocoa-800 transition';
+      });
+      const isIntake = tab === 'intake';
+      document.getElementById('dates-row').classList.toggle('hidden', isIntake);
+      document.getElementById('f-checkin').required = !isIntake;
+      document.getElementById('f-checkout').required = tab === 'book';
+      document.getElementById('intake-extra').classList.toggle('hidden', !isIntake);
+      document.getElementById('submit-btn').textContent =
+        tab === 'book' ? 'Send Booking Request' : (tab === 'meet' ? 'Schedule Meet & Greet (Mon–Fri 8am–3pm)' : 'Complete Client Intake');
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('f-name').value.trim();
+      const phone = document.getElementById('f-phone').value.trim();
+      const dog = document.getElementById('f-dog').value.trim();
+      const weight = document.getElementById('f-weight').value.trim();
+      const checkin = document.getElementById('f-checkin').value;
+      const checkout = document.getElementById('f-checkout').value;
+      const vet = document.getElementById('f-vet').value.trim();
+      const notes = document.getElementById('form-notes').value.trim();
+
+      const typeLabel = activeTab === 'book' ? 'BOARDING REQUEST' : (activeTab === 'meet' ? 'MEET & GREET' : 'NEW CLIENT INTAKE');
+      const lines = [
+        `${typeLabel} — Middletown Mutt Mansion`,
+        `Owner: ${name} (${phone})`,
+        `Dog: ${dog} (${weight} lbs)`
+      ];
+      if (checkin) lines.push(`Dates: ${checkin}${checkout ? ' to ' + checkout : ''}`);
+      if (vet) lines.push(`Vet: ${vet}`);
+      if (notes) lines.push(`Notes: ${notes}`);
+
+      const msgBody = encodeURIComponent(lines.join('\n'));
+      const subject = encodeURIComponent(`${typeLabel}: ${dog} (${name})`);
+      document.getElementById('direct-sms-link').href = `sms:4016813300?&body=${msgBody}`;
+      document.getElementById('direct-email-link').href = `mailto:info@middletownmuttmansion.com?subject=${subject}&body=${msgBody}`;
+
+      document.getElementById('modal-form').classList.add('hidden');
+      document.getElementById('modal-done').classList.remove('hidden');
+    }
+
+    calcEstimate();
+  </script>
+</body>
+</html>

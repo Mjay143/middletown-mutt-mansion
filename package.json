@@ -1,0 +1,10 @@
+{
+  "name": "middletown-mutt-mansion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Middletown Mutt Mansion — Cage-free home dog boarding and daycare in Middletown & Newport, RI.",
+  "scripts": {
+    "dev": "npx --yes serve . -l 8095",
+    "start": "npx --yes serve ."
+  }
+}
